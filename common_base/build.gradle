@@ -1,0 +1,52 @@
+def config = rootProject.ext
+
+
+apply plugin: "com.android.library"
+
+
+android {
+    compileSdk config.android.compileSdk
+
+    defaultConfig {
+
+
+        minSdk config.android.minSdk
+        targetSdk config.android.targetSdk
+        versionCode config.android.versionCode
+        versionName config.android.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled config.android.minifyEnabled
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility config.android.sourceCompatibility
+        targetCompatibility config.android.targetCompatibility
+    }
+}
+
+dependencies {//基础库 引入所有依赖 包括第三方
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    api config.library.appcompat
+    api config.library.material
+    api config.library.constraintlayout
+
+    api config.libARouter
+
+
+
+    //测试依赖暂时保留
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+}

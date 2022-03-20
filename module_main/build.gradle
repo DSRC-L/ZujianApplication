@@ -1,0 +1,73 @@
+def config = rootProject.ext
+
+
+/*plugins {
+    id 'com.android.application'
+}*/
+
+if (config.isComponent) {
+    apply plugin: "com.android.application"
+} else {
+    apply plugin: "com.android.library"
+}
+
+
+android {
+    compileSdk config.android.compileSdk
+
+    defaultConfig {
+
+        if (config.isComponent) {
+            applicationId config.applicationId.main
+        }
+
+        minSdk config.android.minSdk
+        targetSdk config.android.targetSdk
+        versionCode config.android.versionCode
+        versionName config.android.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {//ARouter注解相关 每个模块单独配置
+            annotationProcessorOptions {
+                arguments = ["AROUTER_MODULE_NAME": project.getName()]
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled config.android.minifyEnabled
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility config.android.sourceCompatibility
+        targetCompatibility config.android.targetCompatibility
+    }
+
+
+    sourceSets {
+        main {
+            // 集成环境与组件环境使用不同的AndroidManifest.xml文件
+            if (config.isComponent) {
+                manifest.srcFile 'src/main/debug/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+            }
+        }
+    }
+}
+
+dependencies {
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api project(':common_base')
+    annotationProcessor config.libARouterCompile//ARouter注解依赖 每个模块单独依赖
+
+
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+}
