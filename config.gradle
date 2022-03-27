@@ -38,4 +38,18 @@ ext {//统一的配置信息 需要导入到 项目根目录 build.gradle
     libARouterCompile = "com.alibaba:arouter-compiler:1.5.2"
     libGson = "com.google.code.gson:gson:2.9.0"
 
+    retrofit = "com.squareup.retrofit2:retrofit:2.9.0"
+    retrofitConverter = "com.squareup.retrofit2:converter-gson:2.9.0"
+    rxjavaAdapter = "com.squareup.retrofit2:adapter-rxjava3:2.9.0"//用于适配 rxjava和retrofit
+    okhttpLoggingInterceptor = "com.squareup.okhttp3:logging-interceptor:4.9.3"
+
+    rxandroid = "io.reactivex.rxjava3:rxandroid:3.0.0"
+    rxjava = "io.reactivex.rxjava3:rxjava:3.0.0"
+
+    toastUtils = "com.github.getActivity:ToastUtils:10.3"
+
+
+
+
+
 }

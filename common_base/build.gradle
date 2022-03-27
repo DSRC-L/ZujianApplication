@@ -42,6 +42,15 @@ dependencies {//基础库 引入所有依赖 包括第三方
 
     api config.libARouter
 
+    api config.retrofit
+    api config.retrofitConverter
+    api config.okhttpLoggingInterceptor
+    api config.rxjavaAdapter
+
+    api config.rxandroid
+    api config.rxjava
+
+    api config.toastUtils
 
 
     //测试依赖暂时保留
