@@ -4,6 +4,7 @@
 感谢参考  https://www.jianshu.com/p/7ae24e942788  
          https://www.bilibili.com/video/BV1oK4y1R7Hx?p=12&spm_id_from=pageDriver
          https://blog.csdn.net/wangyetongsss/article/details/84341489
+          https://blog.csdn.net/qq_20521573/article/details/70991850
          
          
 主要给自己记录一下大概的框架，以后用得到
@@ -21,3 +22,5 @@
          4、配置manifest文件
          
          5、配置ARouter （模块间通信）
+
+
